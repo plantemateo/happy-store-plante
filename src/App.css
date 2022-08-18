@@ -1,7 +1,11 @@
 .body{
-    width: 40%;
+    width: 60%;
     display: flex;
     margin-inline: auto;
     margin-block: 20px;
+    justify-content: space-around;
+}
+.searchBar{
+    display: flex;
     justify-content: space-around;
 }
