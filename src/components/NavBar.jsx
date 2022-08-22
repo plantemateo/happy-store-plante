@@ -14,7 +14,7 @@ const NavBar = () => {
             <button className="buttonsNav">ACERCA</button>
           </div>
           <div className="searchBar">
-            <SearchBar contToSearch={"Buscar Productos"}></SearchBar>
+            <SearchBar contToSearch={"Buscar en HAPPY STORE."}></SearchBar>
           </div>
           <div className="carrito"></div>
         </div>

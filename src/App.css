@@ -2,7 +2,7 @@
     width: 90%;
     display: flex;
     margin-inline: auto;
-    margin-block: 20px;
+    margin-block: 25px;
     justify-content: space-around;
 }
 .fondoCarousel{
@@ -208,4 +208,12 @@
     margin: 10px;
     background: #ffffff;
     border-radius: 20px;
+}
+.productosTittle{
+    width: 90%;
+    padding-left: 25px;
+    margin-inline: auto;
+    font-size: 23px;
+    font-weight: 900;
+    color: #000000cc;
 }
