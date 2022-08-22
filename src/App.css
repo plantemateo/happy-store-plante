@@ -1,11 +1,211 @@
 .body{
-    width: 60%;
+    width: 90%;
     display: flex;
     margin-inline: auto;
     margin-block: 20px;
     justify-content: space-around;
 }
+.fondoCarousel{
+    width: 98%;
+    margin-inline: auto;
+    margin-top: 16px;
+    height: 300px;
+    margin-bottom: 48px;
+    background-image: url('../public/img/fondoCarusel.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+}
+.labelCarousel{
+    top: 130px;
+    left: 1288px;
+    position: relative;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #F8F7FF;
+}
 .searchBar{
     display: flex;
     justify-content: space-around;
+    margin-left: auto;
+    padding-right: 20px;
+}
+.navbarStyle{
+    width: 100%;
+    height: 130px;
+    background: linear-gradient(180deg, #220A99 10.5%, #1D078C 41.5%, #0F0066 100%);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+}
+.nameApp{
+    width: 20%;
+    height: 54px;
+    color: #F8F7FF;
+    font-size: 36px;
+    text-decoration: unset;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    line-height: 54px;
+    text-align: center;
+}
+.nameApp:hover{
+    color: #F8F7FF;
+}
+.containerGeneral{
+    display: flex;
+    padding-top: 55px;
+    width: 100%;
+}
+.containerGeneral2{
+    display: flex;
+    width: 100%;
+}
+.buttonsNav{
+    width: 120px;
+    border: none;
+    background: transparent;
+    color: #F8F7FF;
+    border-radius: 10px;
+    padding-block: 9px;
+    padding-inline: 19px;
+    font-size: 20px;
+}
+.buttonsNav:hover {
+    background: #07004C;
+}
+.containerButtons{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.searchBarCustom{
+    width: 450px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background: #F8F7FF;
+    color: #11151C;
+    outline: none;
+    padding-left: 20px;
+}
+.searchBarCustom:hover {
+    border: 2px solid #b724e4;
+}
+.formSearchBar{
+    padding-top: 10px;
+}
+.buttonSearchBar{
+    border: none;
+    background-image: url('../public/img/searchLupa.png');
+    position: relative;
+    width: 31px;
+    height: 25px;
+    left: -40px;
+    top: 6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.buttonSearchBar:hover {
+    transform: scale(1.1);
+}
+.carrito{
+    width: 30px;
+    background-image: url('../public/img/carrito.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 50px;
+    cursor: pointer;
+}
+.carrito:hover {
+    transform: scale(1.2);
+}
+.containerCard{
+    width: 394px;
+    height: 500px;
+    background: #F8F7FF;
+    border-radius: 20px;
+}
+.footer{
+    width: 100%;
+    height: 70px;
+    margin-top: 20px;
+}
+.imgCard1{
+    margin-top: 10px;
+    background-image: url('../public/img/iphone13Pro.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+.imgCard2{
+    margin-top: 10px;
+    background-image: url('../public/img/samsungA32.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+.imgCard3{
+    margin-top: 10px;
+    background-image: url('../public/img/samsungS22.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+.imgCard4{
+    margin-top: 10px;
+    background-image: url('../public/img/iphone13.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+.tittleCard{
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.headerCard{
+    padding-left: 20px;
+    padding-bottom: 15px;
+}
+.containerButtonsCard{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    margin-inline: auto;
+}
+.buttonCard{
+    margin-bottom: 8px;
+    border: none;
+    background: #0F0066;
+    color: #F8F7FF;
+    border-radius: 10px;
+    padding: 5px;
+}
+.buttonCard2{
+    margin-bottom: 8px;
+    border: none;
+    background: #F8F7FF;
+    color: #0F0066;
+    border-radius: 10px;
+    padding: 5px;
+}
+.buttonCard:hover {
+    transform: scale(1.1);
+}
+.buttonCard2:hover {
+    transform: scale(1.1);
+}
+.cotainerImgs{
+    height: 65%;
+    margin: 10px;
+    background: #ffffff;
+    border-radius: 20px;
 }

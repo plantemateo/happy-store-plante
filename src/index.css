@@ -1,8 +1,8 @@
 .fondoApp{
-    background-image: url('../public/img/fondoUI.png');
+    background-color: #E0E1DD;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 130vh;
 }

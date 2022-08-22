@@ -1,39 +1,35 @@
 import './App.css';
 import Cards from './components/Cards';
+import Carousel from './components/fragments/Carousel';
+import Footer from './components/fragments/Footer';
 import NavBar from './components/NavBar';
 
 function App() {
-  const dataCards1 = {
+  const dataCard = {
     card1: {
-      tittle: 'Iphone 13 Pro',
-      header: 'Apple A15 Bionic',
-      text: 'GPU de 5 Nucleos'
-    },
-    card2: {
       tittle: 'Iphone 13 Pro Max',
-      header: 'Apple A15 Bionic',
-      text: 'GPU de 6 Nucleos'
-    }
-  };
-
-  const dataCards2 = {
-    card1: {
-      tittle: 'Samsung Galaxy S22',
-      header: 'Samsung Exynos 2200',
-      text: 'GPU de 8 Nucleos'
+      header: 'USD 1100'
     },
     card2: {
-      tittle: 'Samsung Galaxy S22 Ultra',
-      header: 'Samsung Exynos 2200',
-      text: 'GPU de  Nucleos'
+      tittle: 'Samsung A32',
+      header: 'ARS 75.999'
+    },
+    card3: {
+      tittle: 'Samsung S22 Ultra',
+      header: 'ARS 331.999'
+    },
+    card4: {
+      tittle: 'Iphone 13',
+      header: 'USD 850'
     }
-  };
+  }
 
   return (
     <>
       <NavBar></NavBar>
-      <Cards dataCard={dataCards1}></Cards>
-      <Cards dataCard={dataCards2}></Cards>
+      <Carousel></Carousel>
+      <Cards dataCards={dataCard}></Cards>
+      <Footer></Footer>
     </>
   )
 }
