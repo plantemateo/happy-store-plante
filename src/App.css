@@ -126,14 +126,15 @@
 }
 .containerCard{
     width: 394px;
-    height: 500px;
+    height: 570px;
     background: #F8F7FF;
     border-radius: 20px;
 }
 .footer{
     width: 100%;
-    height: 70px;
-    margin-top: 20px;
+    height: 100px;
+    margin-top: 70px;
+    background: #0F0066;
 }
 .imgCard1{
     margin-top: 10px;
@@ -204,7 +205,7 @@
     transform: scale(1.1);
 }
 .cotainerImgs{
-    height: 65%;
+    height: 50%;
     margin: 10px;
     background: #ffffff;
     border-radius: 20px;
@@ -216,4 +217,37 @@
     font-size: 23px;
     font-weight: 900;
     color: #000000cc;
+}
+.countItems{
+    color: black;
+    width: 22px;
+    text-align: center;
+    height: 22px;
+    border-radius: 10px;
+    background: #F7F8FF;
+    margin-right: 2px;
+}
+.countItemButtons{
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    padding: 3px;
+    background: #0F0066;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    margin-inline: auto;
+    color: white;
+}
+.alertStyle{
+    width: 270px;
+    height: 60px;
+    border-radius: 10px;
+    position: fixed;
+    padding: 12px;
+    color: white;
+    font-size: 17px;
+    left: 85.5%;
+    top: 15px;
+    align-items: center;
+    justify-content: space-evenly;
 }
