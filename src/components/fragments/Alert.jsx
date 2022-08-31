@@ -6,7 +6,7 @@ const Alert = ({ alertData, removeAlert }) => {
         <>
             <div key={'alert'} className="alertStyle" style={{ display: alertData.state ? 'flex' : 'none', background: alertData.color }}>
                 <strong>{alertData.text}</strong>
-                <button type="button" style={{ width: '0.4em', height: '0.4em' }} className="btn-close" onClick={() => removeAlert()} data-bs-dismiss="alert" />
+                <button type="button" style={{ width: '0.5em', height: '0.5em' }} className="btn-close" onClick={() => removeAlert.functionOpenAlert()} data-bs-dismiss="alert" />
             </div>
         </>
     )
