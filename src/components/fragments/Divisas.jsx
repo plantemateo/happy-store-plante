@@ -8,13 +8,11 @@ const Divisas = () => {
     useEffect(() => {
         setInterval(() => {
             DivisasServices.getDolarValues()
-            .then(res => {
-                return res.json();
-            }).then(data => {
+            .then(data => {
                 const dolars = <><div>Cotizacion Dolar&nbsp;&nbsp;-&nbsp;&nbsp;{new Date().toLocaleString()}</div><div>Dolar Blue:&nbsp;&nbsp;${data.blue}, &nbsp; Dolar Mep:&nbsp;&nbsp;${data.mep}, &nbsp; Dolar Solidario:&nbsp;&nbsp;${data.solidario}</div></>;
                 setDivisaData(dolars);
             })
-        }, 5000)
+        }, 2000)
     }, [])
 
     return (

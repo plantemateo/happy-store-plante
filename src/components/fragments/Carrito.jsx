@@ -1,11 +1,10 @@
 import { React } from "react";
 
-const Carrito = ({countItem}) => {
+const Carrito = () => {
 
   return (
     <>
-      <div className="countItems">{countItem ? countItem : 0}</div>
-      <div className="carrito"></div>
+
     </>
   )
 }

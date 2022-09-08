@@ -4,18 +4,48 @@
     margin-inline: auto;
     margin-block: 25px;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
-.fondoCarousel{
+.fondoHome{
     width: 98%;
     margin-inline: auto;
     margin-top: 16px;
     height: 300px;
     margin-bottom: 48px;
-    background-image: url('../public/img/fondoCarusel.jpeg');
+    border-radius: 20px;
+    background-image: url(../../public/img/fondoCarusel.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+}
+.fondoCarousel{
+    width: 70%;
+    margin-inline: auto;
+    margin-top: 16px;
+    height: 550px;
+    margin-bottom: 48px;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    background-position: center;
+    border: 1px solid #0F0066;
+}
+.imagenesCarusel{
+    width: 700px;
+    height: 520px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-inline: auto;
+    background-position: center;
+}
+.buttonFlecha{
+    background: #0f0066db;
+    width: 70px;
+    border: none;
+    height: 70px;
+    border-radius: 65px;
+    margin-left: 145px;
 }
 .labelCarousel{
     top: 130px;
@@ -73,6 +103,7 @@
     padding-block: 9px;
     padding-inline: 19px;
     font-size: 20px;
+    text-decoration: none;
 }
 .buttonsNav:hover {
     background: #07004C;
@@ -100,7 +131,7 @@
 }
 .buttonSearchBar{
     border: none;
-    background-image: url('../public/img/searchLupa.png');
+    background-image: url('../../public/img/searchLupa.png');
     position: relative;
     width: 31px;
     height: 25px;
@@ -114,7 +145,7 @@
 }
 .carrito{
     width: 30px;
-    background-image: url('../public/img/carrito.png');
+    background-image: url('../../public/img/carrito.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -129,40 +160,18 @@
     height: 570px;
     background: #F8F7FF;
     border-radius: 20px;
+    margin-bottom: 70px;
 }
 .footer{
-    width: 100%;
-    height: 100px;
+    height: 165px;
     margin-top: 70px;
     background: #0F0066;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
 }
-.imgCard1{
+.imgCard{
     margin-top: 10px;
-    background-image: url('../public/img/iphone13Pro.jpeg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-}
-.imgCard2{
-    margin-top: 10px;
-    background-image: url('../public/img/samsungA32.jpeg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-}
-.imgCard3{
-    margin-top: 10px;
-    background-image: url('../public/img/samsungS22.jpeg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-}
-.imgCard4{
-    margin-top: 10px;
-    background-image: url('../public/img/iphone13.jpeg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -235,7 +244,7 @@
     background: #0F0066;
     margin-bottom: 15px;
     border-radius: 10px;
-    margin-inline: auto;
+    margin-inline: 25px;
     color: white;
 }
 .alertStyle{
@@ -259,18 +268,19 @@
     align-content: stretch;
     justify-content: space-evenly;
     align-items: center;
-    background: #0f0066db;
+    background: #0f0066f7;
     color: #F7F8FF;
     border-radius: 10px;
     font-size: 18px;
     flex-direction: column;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
 }
 .modalDetalle{
     display: flex;
     position: fixed;
-    width: 700px;
-    height: 500px;
+    width: 800px;
+    height: 550px;
     top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -286,11 +296,11 @@
 .tittleDetalle{
     position: fixed;
     top: 20px;
-    font-size: 20px;
+    font-size: 22px;
 }
 .detalleTittle{
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     padding-bottom: 15px;
 }
 .grillaDetalle{
@@ -304,8 +314,33 @@
 .cotainerImgDetalle{
     padding-inline: 12px;
     padding-bottom: 12px;
-    height: 320px;
+    height: 390px;
     margin: 10px;
     background: #F7F8FF;
     border-radius: 20px;
+}
+.buttonsCantidad{
+    background: #0f0066f7;
+    border: none;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    color: #F7F8FF;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+}
+.containerButtonsCantidad{
+    display: flex;
+    justify-content: center;
+}
+.containerFooterData{
+    color: white;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+.labelFooter{
+    padding-top: 10px;
+    color: #F8F7FF;
+    font-size: 21px;
+    margin-bottom: 10px;
 }

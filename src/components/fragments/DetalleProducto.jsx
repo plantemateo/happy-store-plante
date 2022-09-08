@@ -1,13 +1,28 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { ProductosServices } from "../../services/ProductosService";
+import Store from "../Store";
 
-const ModalDetalle = ({data, openModal}) => {
-    
+const DetalleProducto = () => {
+    const [data, setData] = useState({detalle:{}});
+    const {idProducto} = useParams();
+
+    useEffect(() => {
+        ProductosServices.getAllProducts.then((products) => {
+            let product = products.find(prod => prod.id === idProducto);
+            product.isVisible = true;
+            setData(product);
+        }).catch((err) => {
+        })
+    }, [{}])
+
     return (
         <>  
+            <Store></Store>
             <div className="modalDetalle" style={{display: data.isVisible ? 'flex' : 'none'}}>
-                <div className="containerButton"><button type="button" style={{ width: '0.6em', height: '0.6em', color: 'black' }} className="btn-close" onClick={() => openModal(data.id)} data-bs-dismiss="alert" /></div>
+                <div className="containerButton"><Link style={{textDecoration: "none", color: "#F8F7FF"}} to={'/tienda'}><button type="button" style={{ width: '0.6em', height: '0.6em', color: 'black' }} className="btn-close" data-bs-dismiss="alert" /></Link></div>
                 <div className="cotainerImgDetalle">
-                    <div className={data.img} style={{width: '250px', height: '300px'}}></div>
+                    <div className="imgCard" style={{width: '250px', height: '370px', backgroundImage: `url('../../img/${data.img}')`}}></div>
                 </div>
                 <div className="tittleDetalle">
                     <label>{data.tittle}</label>
@@ -28,4 +43,4 @@ const ModalDetalle = ({data, openModal}) => {
     )
 }
 
-export default ModalDetalle;
+export default DetalleProducto;
