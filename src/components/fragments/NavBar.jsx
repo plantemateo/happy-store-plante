@@ -1,9 +1,11 @@
 //NavBar component UI
 import { React } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 const NavBar = ({countItem}) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <nav className="navbarStyle">
@@ -19,7 +21,7 @@ const NavBar = ({countItem}) => {
               <SearchBar contToSearch={"Buscar en HAPPY STORE."}></SearchBar>
             </div>
               <div className="countItems">{countItem ? countItem : 0}</div>
-              <div className="carrito"></div>
+              <div className="carrito" onClick={() => {navigate('/carrito')}}></div>
           </div>
         </div>
       </nav>

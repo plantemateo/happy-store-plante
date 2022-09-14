@@ -1,5 +1,6 @@
 import { React, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CarritoStoreContext } from "../../context/CarritoStoreContext";
 import { CountItemContext } from "../../context/CountItemContext";
 import { ProductosServices } from "../../services/ProductosService";
 import Alert from "./Alert";
@@ -7,6 +8,7 @@ import Alert from "./Alert";
 const ButtonsTrolley = ({ idProduct }) => {
     const [cantidad, setCantidad] = useState(1);
     const {countItem, addCountItem} = useContext(CountItemContext);
+    const {addItemCarrito, removeItemCarrito} = useContext(CarritoStoreContext);
     const [dataAlert, setDataAlert] = useState({ text: 'Se ha anadido al carrito!', state: false, color: 'rgba(67, 206, 42, 0.98)' });
 
     const addItem = (id) => {
@@ -17,6 +19,7 @@ const ButtonsTrolley = ({ idProduct }) => {
                         product.stock = product.stock - cantidad;
                         product.cantidad = product.cantidad + cantidad;
                         incrementCountItem(true);
+                        addItemCarrito(product);
                     } else {
                         setCantidad(1);
                         setDataAlert({ text: 'No hay mas stock para este producto, disculpe las molestias.', state: true, color: '#32a881' });
@@ -33,6 +36,7 @@ const ButtonsTrolley = ({ idProduct }) => {
                     product.stock = product.stock + cantidad;
                     product.cantidad = product.cantidad - cantidad;
                     incrementCountItem(false);
+                    removeItemCarrito(product);
                 } else if (id === product.id && product.cantidad === 0) {
                     setDataAlert({ text: undefined, state: false, color: undefined });
                 }

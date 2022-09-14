@@ -7,6 +7,7 @@ const productos = [
       cantidad: 0,
       img: 'iphone13Pro.jpeg',
       isVisible: false,
+      categoria: 'celulares',
       detalle: {
         memory: '256 GB',
         micro: 'A15 Bionic',
@@ -25,6 +26,7 @@ const productos = [
       cantidad: 0,
       img: 'monitorsmg.jpeg',
       isVisible: false,
+      categoria: 'monitores',
       detalle: {
         memory: 'Incorporated',
         micro: 'Mediatek Helio G80 2GHz',
@@ -43,6 +45,7 @@ const productos = [
       cantidad: 0,
       img: 'silla-gamer.webp',
       isVisible: false,
+      categoria: 'sillas-gamers',
       detalle: {
         memory: '512 GB',
         micro: 'Exynos 2200 a 2,8GHz',
@@ -61,6 +64,7 @@ const productos = [
       cantidad: 0,
       img: 'iphone13.jpeg',
       isVisible: false,
+      categoria: 'celulares',
       detalle: {
         memory: '128 GB',
         micro: 'A15 Bionic',
@@ -79,6 +83,7 @@ const productos = [
       cantidad: 0,
       img: 'hplaptop11.webp',
       isVisible: false,
+      categoria: 'notebooks',
       detalle: {
         memory: '512 GB',
         micro: 'Intel i5 11Th Generation',
@@ -97,6 +102,7 @@ const productos = [
       cantidad: 0,
       img: 'samsungA32.jpeg',
       isVisible: false,
+      categoria: 'celulares',
       detalle: {
         memory: '64 GB',
         micro: 'Mediatek Helio G80 2GHz',
@@ -115,6 +121,7 @@ const productos = [
       cantidad: 0,
       img: 'jbl-parlante1.webp',
       isVisible: false,
+      categoria: 'parlantes',
       detalle: {
         memory: '128 GB',
         micro: 'A15 Bionic',
@@ -133,6 +140,7 @@ const productos = [
       cantidad: 0,
       img: 'samsungS22.jpeg',
       isVisible: false,
+      categoria: 'celulares',
       detalle: {
         memory: '512 GB',
         micro: 'Exynos 2200 a 2,8GHz',

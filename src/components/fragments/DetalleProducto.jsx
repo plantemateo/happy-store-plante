@@ -28,7 +28,7 @@ const DetalleProducto = () => {
                     <label>{data.tittle}</label>
                 </div>
                 <div className="grillaDetalle">
-                    <label className="detalleTittle">Detalle</label>
+                    <label className="detalleTittle">Detalle Unidad</label>
                     <label>Precio:&nbsp;&nbsp;{data.header}</label>
                     <label>Color:&nbsp;&nbsp;{data.detalle.color}</label>
                     <label>Memoria:&nbsp;&nbsp;{data.detalle.memory}</label>
@@ -37,6 +37,8 @@ const DetalleProducto = () => {
                     <label>Ram:&nbsp;&nbsp;{data.detalle.ram}</label>
                     <label>Bateria:&nbsp;&nbsp;{data.detalle.bateria}</label>
                     <label>Sistema Operativo:&nbsp;&nbsp;{data.detalle.os}</label>
+                    <br></br>
+                    <label>Cantidad Añadida:&nbsp;&nbsp;{data.cantidad}</label>
                 </div>
             </div>
         </>
