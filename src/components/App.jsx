@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Home';
 import Store from './Store';
 import DetalleProducto from './fragments/DetalleProducto';
-import Carrito from './fragments/Carrito';
+import Carrito from './Carrito';
 import Footer from './fragments/Footer';
 import NavBar from './fragments/NavBar';
 import { CountItemContext } from '../context/CountItemContext';
