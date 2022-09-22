@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { ProductosServices } from "../../services/ProductosService";
+import { ImgService } from "../../services/ImgService";
 
 const Carousel = () => {
     const [img, setImg] = useState({ id: 1, name: "hplaptop11.webp" });
@@ -7,7 +7,7 @@ const Carousel = () => {
 
     useEffect(() => {
         if (imagenes.length === 0) {
-            ProductosServices.getAllImagenes
+            ImgService.getAllImagenes
                 .then(imagens => {
                     setImagenes(imagens.sort((a, b) => a.id - b.id));
                 })

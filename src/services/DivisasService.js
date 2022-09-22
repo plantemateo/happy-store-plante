@@ -1,4 +1,4 @@
-import { environments } from "../environments";
+import environments from "../environments";
 
 const DivisasServices = {
     getDolarValues: async () => {

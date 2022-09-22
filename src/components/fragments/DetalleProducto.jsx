@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ProductosServices } from "../../services/ProductosService";
+import { getAllProducts } from "../../services/Firebase";
 import Store from "../Store";
 
 const DetalleProducto = () => {
@@ -8,7 +8,8 @@ const DetalleProducto = () => {
     const {idProducto} = useParams();
 
     useEffect(() => {
-        ProductosServices.getAllProducts.then((products) => {
+        getAllProducts().then((data) => {
+            let products = data.docs.map(doc => doc.data());
             let product = products.find(prod => prod.id === idProducto);
             product.isVisible = true;
             setData(product);

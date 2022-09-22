@@ -1,15 +1,15 @@
 import ButtonsTrolley from "./ButtonsTrolley";
-import { ProductosServices } from '../../services/ProductosService';
+import { getAllProducts } from '../../services/Firebase';
 import { React, useState, useEffect } from "react";
 
 const CardsStore = ({category}) => {
   const [productsCard, setProductsCards] = useState([]);
 
   useEffect(() => {
-      ProductosServices.getAllProducts.then((products) => {
-        setProductsCards(products);
-      }).catch((err) => {
-      })
+    getAllProducts().then(data => {
+      const products = data.docs.map(doc => doc.data());
+      setProductsCards(products);
+    });
   }, [{}])
 
   return (

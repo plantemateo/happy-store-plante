@@ -2,7 +2,7 @@ import { React, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarritoStoreContext } from "../../context/CarritoStoreContext";
 import { CountItemContext } from "../../context/CountItemContext";
-import { ProductosServices } from "../../services/ProductosService";
+import { getAllProducts } from "../../services/Firebase";
 import Alert from "./Alert";
 
 const ButtonsTrolley = ({ idProduct }) => {
@@ -12,7 +12,8 @@ const ButtonsTrolley = ({ idProduct }) => {
     const [dataAlert, setDataAlert] = useState({ text: 'Se ha anadido al carrito!', state: false, color: 'rgba(67, 206, 42, 0.98)' });
 
     const addItem = (id) => {
-        ProductosServices.getAllProducts.then(products => {
+        getAllProducts().then(data => {
+            let products = data.docs.map(doc => doc.data());
             products.forEach(product => {
                 if (id === product.id) {
                     if (product.stock > 0 && product.stock >= cantidad) {
@@ -30,7 +31,8 @@ const ButtonsTrolley = ({ idProduct }) => {
     }
 
     const removeItem = (id) => {
-        ProductosServices.getAllProducts.then(products => {
+        getAllProducts().then(data => {
+            let products = data.docs.map(doc => doc.data());
             products.forEach(product => {
                 if (id === product.id && product.cantidad > 0) {
                     product.stock = product.stock + cantidad;
