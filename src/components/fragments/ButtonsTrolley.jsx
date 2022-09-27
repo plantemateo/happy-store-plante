@@ -2,7 +2,7 @@ import { React, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarritoStoreContext } from "../../context/CarritoStoreContext";
 import { CountItemContext } from "../../context/CountItemContext";
-import { getAllProducts } from "../../services/Firebase";
+import { getProductById } from "../../services/Firebase";
 import Alert from "./Alert";
 
 const ButtonsTrolley = ({ idProduct }) => {
@@ -11,38 +11,33 @@ const ButtonsTrolley = ({ idProduct }) => {
     const {addItemCarrito, removeItemCarrito} = useContext(CarritoStoreContext);
     const [dataAlert, setDataAlert] = useState({ text: 'Se ha anadido al carrito!', state: false, color: 'rgba(67, 206, 42, 0.98)' });
 
-    const addItem = (id) => {
-        getAllProducts().then(data => {
-            let products = data.docs.map(doc => doc.data());
-            products.forEach(product => {
-                if (id === product.id) {
-                    if (product.stock > 0 && product.stock >= cantidad) {
-                        product.stock = product.stock - cantidad;
-                        product.cantidad = product.cantidad + cantidad;
-                        incrementCountItem(true);
-                        addItemCarrito(product);
-                    } else {
-                        setCantidad(1);
-                        setDataAlert({ text: 'No hay mas stock para este producto, disculpe las molestias.', state: true, color: '#32a881' });
-                    }
-                }
-            });
+    const addItem = async (id) => {
+        await getProductById(id).then(prod => {
+            let product = prod.data();
+            if (product.stock > 0 && product.stock >= cantidad) {
+                product.stock = product.stock - cantidad;
+                product.cantidad = product.cantidad + cantidad;
+                incrementCountItem(true);
+                addItemCarrito(product);
+            } else {
+                setCantidad(1);
+                setDataAlert({ text: 'No hay mas stock para este producto, disculpe las molestias.', state: true, color: '#32a881' });
+            }
+
         })
     }
 
-    const removeItem = (id) => {
-        getAllProducts().then(data => {
-            let products = data.docs.map(doc => doc.data());
-            products.forEach(product => {
-                if (id === product.id && product.cantidad > 0) {
-                    product.stock = product.stock + cantidad;
-                    product.cantidad = product.cantidad - cantidad;
-                    incrementCountItem(false);
-                    removeItemCarrito(product);
-                } else if (id === product.id && product.cantidad === 0) {
-                    setDataAlert({ text: undefined, state: false, color: undefined });
-                }
-            });
+    const removeItem = async (id) => {
+        await getProductById(id).then(prod => {
+            let product = prod.data();
+            if (product.cantidad > 0) {
+                product.stock = product.stock + cantidad;
+                product.cantidad = product.cantidad - cantidad;
+                incrementCountItem(false);
+                removeItemCarrito(product);
+            } else if (product.cantidad === 0) {
+                setDataAlert({ text: undefined, state: false, color: undefined });
+            }
         })
     }
 

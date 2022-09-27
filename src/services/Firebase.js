@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { addDoc, getFirestore, collection, doc ,getDocs, getDoc } from "firebase/firestore";
+import { setDoc, getFirestore, collection, doc ,getDocs, getDoc } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 import environments from "../environments";
 
@@ -18,10 +18,10 @@ const firestoreDB = getFirestore();
 const firebaseAnalytics = getAnalytics(firebaseApp);
 
 async function cargarProductosToDB(){
-    if((await getDocs(collection(firestoreDB, "productos"))).size === 0){
+    if((await getDocs(collection(firestoreDB, "productos"))).docs.length === 0){
         const productos = await (await fetch('../../json/productos.json')).json();
         productos.forEach(async prod => {
-            await addDoc(collection(firestoreDB, "productos"), {
+            await setDoc(doc(firestoreDB, "productos", prod.id), {
                 id: prod.id,
                 tittle: prod.tittle,
                 header: prod.header,
@@ -43,10 +43,12 @@ async function cargarProductosToDB(){
                 }
             })
         })
+    }else{
+        console.log("YA HAY PRODUCTOS");
     }
 }
 
-const getProductById= async (id) => {
+const getProductById = async (id) => {
     return await getDoc(doc(firestoreDB, "productos", id))
 }
 
@@ -54,6 +56,22 @@ const getAllProducts = async () => {
     return await getDocs(collection(firestoreDB, "productos"))
 }
 
+const saveProduct = async (product) => {
+    return await setDoc(doc(firestoreDB, "productos", product.id), product)
+}
+
+const addNewOrdenCarrito = async (newOrden) => {
+    return await setDoc(doc(firestoreDB, "ordenes", newOrden.id), newOrden)
+}
+
+const getAllOrdenesCarrito = async () => {
+    return await getDocs(collection(firestoreDB, "ordenes"))
+}
+
+const getOrdenCarritoById = async (id) => {
+    return await getDoc(doc(firestoreDB, "ordenes", id))
+}
+
 cargarProductosToDB();
 
-export { firebaseApp, firebaseAnalytics, firestoreDB, getProductById, getAllProducts };
+export { firebaseApp, firebaseAnalytics, firestoreDB, getProductById, getAllProducts, saveProduct, addNewOrdenCarrito, getOrdenCarritoById, getAllOrdenesCarrito };

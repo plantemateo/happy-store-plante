@@ -28,6 +28,24 @@ const Carrito = () => {
     addCountItem(countItem - countItem);
   }
 
+  const updateItemCarrito = async (prod, action) => {
+    if(action === "DEL"){
+      prod.cantidad = 0;
+      await removeItemCarrito(prod);
+      addCountItem(countItem - 1);
+    }else if(action === "ADD"){
+      prod.cantidad = prod.cantidad + 1;
+      await addItemCarrito(prod);
+      addCountItem(countItem + 1);
+    }else if(action === "REM"){
+      prod.cantidad = prod.cantidad - 1;
+      await removeItemCarrito(prod);
+      addCountItem(countItem - 1);
+    }
+      setTotalPesos(0);
+      setTotalDolares(0);
+  }
+
   return (
     <>
       <Store></Store>
@@ -48,15 +66,15 @@ const Carrito = () => {
                   {prod.precio}
                 </div>
                 <div>
-                  <button className="buttonsCantidad" onClick={() => {prod.cantidad = prod.cantidad - 1;removeItemCarrito(prod);addCountItem(countItem - 1);setTotalPesos(0);setTotalDolares(0)}}>-</button>
+                  <button className="buttonsCantidad" onClick={() => {updateItemCarrito(prod, "REM")}}>-</button>
                   <label className="labelCantidad">{prod.cantidad}</label>
-                  <button className="buttonsCantidad" onClick={() => {prod.cantidad = prod.cantidad + 1;addItemCarrito(prod);addCountItem(countItem + 1);setTotalPesos(0);setTotalDolares(0)}}>+</button>
+                  <button className="buttonsCantidad" onClick={() => {updateItemCarrito(prod, "ADD")}}>+</button>
                 </div>
                 <div>
                   <label>{prod.stock} disponibles</label>
                 </div>
                 <div>
-                  <button className="buttonCard" onClick={() => {prod.cantidad = 0;removeItemCarrito(prod);addCountItem(countItem - 1);setTotalPesos(0);setTotalDolares(0)}}>Eliminar</button>
+                  <button className="buttonCard" onClick={() => {updateItemCarrito(prod, "DEL")}}>Eliminar</button>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <button className="buttonCard">Comprar Ahora</button>
                 </div>

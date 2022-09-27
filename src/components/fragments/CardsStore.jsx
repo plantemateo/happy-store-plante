@@ -6,10 +6,12 @@ const CardsStore = ({category}) => {
   const [productsCard, setProductsCards] = useState([]);
 
   useEffect(() => {
-    getAllProducts().then(data => {
-      const products = data.docs.map(doc => doc.data());
-      setProductsCards(products);
-    });
+    if(productsCard.length === 0){
+      getAllProducts().then(data => {
+        const products = data.docs.map(doc => doc.data());
+        setProductsCards(products);
+      });
+    }
   }, [{}])
 
   return (
