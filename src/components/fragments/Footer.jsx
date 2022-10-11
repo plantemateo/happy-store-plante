@@ -12,13 +12,13 @@ const Footer = () => {
                 </div>
                 <div>
                     <label className="labelFooter" style={{paddingTop: "18px"}}>Contacto:</label>
-                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/whatsapp.png"}></img>&nbsp;&nbsp;+54 3543 625698</div>
-                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/email.png"}></img>&nbsp;&nbsp;happystore@gmail.com</div>
+                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/whatsapp.png"} alt="Cargando..."></img>&nbsp;&nbsp;+54 3543 625698</div>
+                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/email.png"} alt="Cargando..."></img>&nbsp;&nbsp;happystore@gmail.com</div>
                 </div>
                 <div>
                     <label className="labelFooter" style={{paddingTop: "18px"}}>Buscanos en redes:</label>
-                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/instagram.png"}></img>&nbsp;&nbsp;@happystore</div>
-                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/facebook.png"}></img>&nbsp;&nbsp;Happy Store</div>
+                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/instagram.png"} alt="Cargando..."></img>&nbsp;&nbsp;@happystore</div>
+                    <div className="containerFooterData" ><img width={"30px"} src={"../../img/facebook.png"} alt="Cargando..."></img>&nbsp;&nbsp;Happy Store</div>
                 </div>
             </div>
         </>
