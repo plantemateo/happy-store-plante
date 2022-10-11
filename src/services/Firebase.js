@@ -1,16 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { setDoc, getFirestore, collection, doc ,getDocs, getDoc } from "firebase/firestore";
+import { setDoc, getFirestore, collection, doc ,getDocs, getDoc, deleteDoc } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-import environments from "../environments";
 
 const firebaseConfig = {
-  apiKey: environments.API_KEY_FIREBASE,
-  authDomain: environments.AUTH_DOMAIN_FIREBASE,
-  projectId: environments.PROJECT_ID_FIREBASE,
-  storageBucket: environments.STORAGE_BUCKET_FIREBASE,
-  messagingSenderId: environments.MESSAGING_SENDER_ID_FIREBASE,
-  appId: environments.APP_ID_FIREBASE,
-  measurementId: environments.MEASUREMENT_ID_FIREBASE
+  apiKey: process.env.REACT_APP_API_KEY_FIREBASE,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN_FIREBASE,
+  projectId: process.env.REACT_APP_PROJECT_ID_FIREBASE,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET_FIREBASE,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID_FIREBASE,
+  appId: process.env.REACT_APP_APP_ID_FIREBASE,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID_FIREBASE
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -44,7 +43,7 @@ async function cargarProductosToDB(){
             })
         })
     }else{
-        console.log("YA HAY PRODUCTOS");
+        console.log(`${new Date().toLocaleDateString()} [TRACE] FIREBASE: YA HAY PRODUCTOS`);
     }
 }
 
@@ -72,6 +71,23 @@ const getOrdenCarritoById = async (id) => {
     return await getDoc(doc(firestoreDB, "ordenes", id))
 }
 
-cargarProductosToDB();
+const addNewCompra= async (newCompra) => {
+    return await setDoc(doc(firestoreDB, "compras", newCompra.id), newCompra)
+}
 
-export { firebaseApp, firebaseAnalytics, firestoreDB, getProductById, getAllProducts, saveProduct, addNewOrdenCarrito, getOrdenCarritoById, getAllOrdenesCarrito };
+const getCompraById = async (id) => {
+    return await getDoc(doc(firestoreDB, "compras", id))
+}
+
+const deleteLastCompra = async () => {
+    if((await getDocs(collection(firestoreDB, "compras"))).docs.length > 0){
+        return await deleteDoc(doc(firestoreDB, "compras", "compra1"))
+    }else{
+        console.log(`${new Date().toLocaleDateString()} [TRACE] FIREBASE: NO HAY COMPRAS`);
+    }
+}
+
+cargarProductosToDB();
+deleteLastCompra();
+
+export { firebaseApp, firebaseAnalytics, firestoreDB, getProductById, getAllProducts, saveProduct, addNewOrdenCarrito, getOrdenCarritoById, getAllOrdenesCarrito, addNewCompra, getCompraById };

@@ -1,14 +1,56 @@
-import { React, useContext, useState, useCallback} from "react";
-import { Link } from "react-router-dom";
+import { React, useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CarritoStoreContext } from "../context/CarritoStoreContext";
 import { CountItemContext } from "../context/CountItemContext";
+import { SpinnerContext } from "../context/SpinnerContext";
+import { DivisasServices } from "../services/DivisasService";
 import Store from "./Store";
 
 const Carrito = () => {
-  const {carritoProducts, addItemCarrito, removeItemCarrito} = useContext(CarritoStoreContext);
+  const {changeState} = useContext(SpinnerContext);
+  const navigate = useNavigate();
+  const {carritoProducts, addItemCarrito, removeItemCarrito, setPaymentData} = useContext(CarritoStoreContext);
   const {countItem, addCountItem} = useContext(CountItemContext);
   const [totalPesos, setTotalPesos] = useState(0);
   const [totalDolares, setTotalDolares] = useState(0);
+
+  const updateItemCarrito = async (prod, action) => {
+    changeState(true);
+    if(action === "DEL"){
+      prod.cantidad = 0;
+      await removeItemCarrito(prod);
+      addCountItem(countItem - 1);
+    }else if(action === "ADD"){
+      prod.cantidad = prod.cantidad + 1;
+      await addItemCarrito(prod);
+      addCountItem(countItem + 1);
+    }else if(action === "REM"){
+      prod.cantidad = prod.cantidad - 1;
+      await removeItemCarrito(prod);
+      addCountItem(countItem - 1);
+    }
+      
+    setTotalPesos(0);
+    setTotalDolares(0);
+    changeState(false);
+  }
+  
+  const calculateMontoPagarGoCompras = async () => {
+    if(carritoProducts.length > 0){
+      let dolarBluePrice = undefined;
+      changeState(true);
+      await DivisasServices.getDolarValues().then(data => {
+        dolarBluePrice = data.blue;
+      }).finally(() => {
+        changeState(false);
+      });
+
+      let amountPay = ((totalDolares * dolarBluePrice) + totalPesos);
+      const paymentData = { montoPagar: amountPay };
+      setPaymentData(paymentData);
+      navigate('/compras');
+    }
+  }
 
   if(carritoProducts.length > 0 && totalPesos === 0 && totalDolares === 0) {
     let contadorPesos = 0;
@@ -28,24 +70,6 @@ const Carrito = () => {
     addCountItem(countItem - countItem);
   }
 
-  const updateItemCarrito = async (prod, action) => {
-    if(action === "DEL"){
-      prod.cantidad = 0;
-      await removeItemCarrito(prod);
-      addCountItem(countItem - 1);
-    }else if(action === "ADD"){
-      prod.cantidad = prod.cantidad + 1;
-      await addItemCarrito(prod);
-      addCountItem(countItem + 1);
-    }else if(action === "REM"){
-      prod.cantidad = prod.cantidad - 1;
-      await removeItemCarrito(prod);
-      addCountItem(countItem - 1);
-    }
-      setTotalPesos(0);
-      setTotalDolares(0);
-  }
-
   return (
     <>
       <Store></Store>
@@ -56,14 +80,14 @@ const Carrito = () => {
           { carritoProducts.length > 0 ?
             carritoProducts.map(prod => 
               <div className="containerProdCarrito" key={prod.header}>
-                  <div className="imgProdCarrito" style={{backgroundImage: `url('../img/${prod.img}')`}}></div>
+                <div className="imgProdCarrito" style={{backgroundImage: `url('../img/${prod.img}')`}}></div>
                 <div style={{width: "150px", textAlign: "center"}}>    
                   {prod.tittle}
                 </div>
                 <div style={{width: "100px", textAlign: "center"}}>
                   {prod.divisa}
                   &nbsp;&nbsp;
-                  {prod.precio}
+                  {prod.precio.toLocaleString()}
                 </div>
                 <div>
                   <button className="buttonsCantidad" onClick={() => {updateItemCarrito(prod, "REM")}}>-</button>
@@ -76,7 +100,7 @@ const Carrito = () => {
                 <div>
                   <button className="buttonCard" onClick={() => {updateItemCarrito(prod, "DEL")}}>Eliminar</button>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button className="buttonCard">Comprar Ahora</button>
+                  <button className="buttonCard" onClick={() => {calculateMontoPagarGoCompras()}}>Comprar Ahora</button>
                 </div>
               </div>
             )
@@ -87,24 +111,24 @@ const Carrito = () => {
               <div className="buttonTiendaCarrito"><Link style={{ textDecoration: "none", color: "#0f0066f7" }} to={'/tienda'}>Ir a la tienda</Link></div>
             </div>
           }
-          { carritoProducts.length > 0 ?
+        </div>
+        { carritoProducts.length > 0 ?
             <div className="containerTotals">
               <div>
-                <button className="buttonCard" style={{marginBottom: "unset"}}>Comprar</button>
+                <button className="buttonCard" style={{marginBottom: "unset"}} onClick={() => {calculateMontoPagarGoCompras()}}>Comprar</button>
               </div>
               <div>
                 <div>
-                  Total Pesos:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${totalPesos.toFixed(3)}
+                  Total Pesos:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${totalPesos.toLocaleString()}
                 </div>
                 <div>
-                  Total Dolares:&nbsp;&nbsp;${totalDolares.toFixed(2)}
+                  Total Dolares:&nbsp;&nbsp;${totalDolares.toLocaleString()}
                 </div>
               </div>
             </div>
             : 
             undefined
-          }
-        </div>
+        }
       </div>
     </>
   )

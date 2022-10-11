@@ -392,7 +392,7 @@
     background: #0f0066f7;
     color: #F7F8FF;
     border-radius: 10px;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     align-content: stretch;
@@ -426,19 +426,19 @@
     color: #F8F7FF;
 }
 .containerProductsCarrito{
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
     width: 100%;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    max-height: 660px;
+    max-height: 600px;
     overflow: auto;
 }
 .containerTotals{
     background: #F7F8FF;
-    width: 325px;
-    height: 60px;
+    width: 350px;
+    height: 75px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -447,7 +447,7 @@
     border-radius: 10px;
     padding: 10px;
     margin-left: auto;
-    margin-right: 4%;
+    margin-right: 4.9%;
     font-size: 18px;
 }
 .carritoVacio{
@@ -476,4 +476,163 @@
     color: #F7F8FF;
     padding: 7px;
     border-radius: 10px;
+}
+.containerPayment{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+.buttonPayment{
+    width: 250px;
+    height: 75px;
+    border: none;
+    padding-inline: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+}
+.buttonPayment:hover {
+    transform: scale(1.2);
+}
+.comprasView{
+    width: 52%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-inline: auto;
+    margin-top: 40px;
+}
+.comprasPaymentTittle{
+    width: 380px;
+    text-align: center;
+    font-size: 22px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-inline: auto;
+    background: #0f0066f7;
+    color: #F7F8FF;
+    border-radius: 7px;
+}
+.containerComprasTittle{
+    width: 300px;
+    margin-inline: auto;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 22px;
+    background: #0f0066f7;
+    color: #F7F8FF;
+}
+.containerCompras{
+    margin-top: 20px;
+    width: 40%;
+    display: flex;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #F7F8FF;
+    height: 500px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.buttonBuy{
+    width: 200px;
+    border: none;
+    background: #2b992e;
+    padding-block: 8px;
+    border-radius: 10px;
+    color: #F7F8FF;
+}
+.buttonBuy:hover {
+    transform: scale(1.2);
+}
+.containerSpinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.fondoSpinner{
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    top: 0px;
+    opacity: 0.35;
+    background: black;
+}
+.cardDataInput{
+    width: 400px;
+    border-radius: 7px;
+    border: none;
+    background: #0f0066f7;
+    padding: 7px;
+    text-align: center;
+    color: #F7F8FF;
+}
+.cardDataInput::placeholder{
+    color: #F7F8FF;
+}
+.cardDataInputDate{
+    width: 150px;
+    border-radius: 7px;
+    border: none;
+    background: #0f0066f7;
+    padding: 7px;
+    text-align: center;
+    color: #F7F8FF;
+}
+.cardDataInputDate::placeholder{
+    color: #F7F8FF;
+}
+.containerDataCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.checkConfirm{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F7F8FF;
+    border-radius: 7px;
+    justify-content: space-evenly;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+}
+.containerMisComprasEmpty{
+    border-radius: 10px;
+    height: 450px;
+    width: 710px;
+    display: flex;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.containerProductMisCompras{
+    overflow: auto;
+    min-height: 500px;
+    max-height: 500px;
+    margin-top: 13px;
+    width: 90%;
+    margin-inline: auto;
+}
+.labelErrorCompras{
+    color: #e81111;
+    display: flex;
+    font-size: 15px;
+    margin-top: 2px;
+    font-weight: bold;
+}
+.labelPaymentSelect{
+    background: #0f0066f7;
+    color: #F7F8FF;
+    padding-block: 5px;
+    padding-inline: 10px;
+    border-radius: 7px;
 }

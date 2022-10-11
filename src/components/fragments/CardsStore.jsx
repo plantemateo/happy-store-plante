@@ -1,15 +1,20 @@
 import ButtonsTrolley from "./ButtonsTrolley";
 import { getAllProducts } from '../../services/Firebase';
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
+import { SpinnerContext } from "../../context/SpinnerContext";
 
 const CardsStore = ({category}) => {
+  const {changeState} = useContext(SpinnerContext);
   const [productsCard, setProductsCards] = useState([]);
 
   useEffect(() => {
     if(productsCard.length === 0){
+      changeState(true);
       getAllProducts().then(data => {
         const products = data.docs.map(doc => doc.data());
         setProductsCards(products);
+      }).finally(() => {
+        changeState(false);
       });
     }
   }, [{}])

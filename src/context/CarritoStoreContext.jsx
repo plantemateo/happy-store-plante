@@ -5,6 +5,7 @@ const CarritoStoreContext = createContext();
 
 const CarritoStoreProvider = (props) => {
     const [carritoProducts, setCarritoProducts] = useState([]);
+    const [paymentData, setPaymentData] = useState(0);
 
     const addItemCarrito = async (producto) => {
         await saveProduct(producto);
@@ -47,7 +48,7 @@ const CarritoStoreProvider = (props) => {
 
     return (
         <>
-            <CarritoStoreContext.Provider value={{carritoProducts, addItemCarrito, removeItemCarrito}}>
+            <CarritoStoreContext.Provider value={{carritoProducts, addItemCarrito, removeItemCarrito, paymentData, setPaymentData, setCarritoProducts}}>
                 {props.children}
             </CarritoStoreContext.Provider>
         </>

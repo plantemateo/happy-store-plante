@@ -34,6 +34,22 @@ const imagenes = [
   {
     id: 9, 
     name: "gopro.jpg"
+  },
+  {
+    id: 10, 
+    name: "lg-monitor2.webp"
+  },
+  {
+    id: 11, 
+    name: "lg-tele-2.webp"
+  },
+  {
+    id: 12, 
+    name: "parlante-sony2.webp"
+  },
+  {
+    id: 13, 
+    name: "sillagamer-2.webp"
   }
 ];
 

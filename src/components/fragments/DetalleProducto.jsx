@@ -1,19 +1,24 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext} from "react";
 import { useParams, Link } from "react-router-dom";
+import { SpinnerContext } from "../../context/SpinnerContext";
 import { getProductById } from "../../services/Firebase";
 import Store from "../Store";
 
 const DetalleProducto = () => {
+    const {changeState} = useContext(SpinnerContext);
     const [data, setData] = useState({detalle:{}});
     const {idProducto} = useParams();
 
     useEffect(() => {
         if(data.id === undefined){
+            changeState(true);
             getProductById(idProducto).then((prod) => {
                 let product = prod.data();
                 product.isVisible = true;
                 setData(product);
             }).catch((err) => {
+            }).finally(() => {
+                changeState(false);
             })
         }
     }, [{}])

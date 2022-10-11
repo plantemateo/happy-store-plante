@@ -10,12 +10,12 @@ const NavBar = ({countItem}) => {
     <div>
       <nav className="navbarStyle">
         <div className="containerGeneral">
-          <a className="nameApp">HAPPY STORE</a>
+          <a href="/" className="nameApp">HAPPY STORE</a>
           <div className="containerGeneral2">
             <div className="containerButtons">
               <button className="buttonsNav"><Link style={{textDecoration: "none", color: "#F8F7FF"}} to={'/'}>HOME</Link></button>
               <button className="buttonsNav"><Link style={{textDecoration: "none", color: "#F8F7FF"}} to={'/tienda'}>STORE</Link></button>
-              <button className="buttonsNav">ACERCA</button>
+              <button className="buttonsNav" style={{width: '180px'}}><Link style={{textDecoration: "none", color: "#F8F7FF"}} to={'/adquisiciones'}>MIS COMPRAS</Link></button>
             </div>
             <div className="searchBar">
               <SearchBar contToSearch={"Buscar en HAPPY STORE."}></SearchBar>

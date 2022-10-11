@@ -2,16 +2,19 @@ import { React, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarritoStoreContext } from "../../context/CarritoStoreContext";
 import { CountItemContext } from "../../context/CountItemContext";
+import { SpinnerContext } from "../../context/SpinnerContext";
 import { getProductById } from "../../services/Firebase";
 import Alert from "./Alert";
 
 const ButtonsTrolley = ({ idProduct }) => {
+    const {changeState} = useContext(SpinnerContext);
     const [cantidad, setCantidad] = useState(1);
     const {countItem, addCountItem} = useContext(CountItemContext);
     const {addItemCarrito, removeItemCarrito} = useContext(CarritoStoreContext);
     const [dataAlert, setDataAlert] = useState({ text: 'Se ha anadido al carrito!', state: false, color: 'rgba(67, 206, 42, 0.98)' });
 
     const addItem = async (id) => {
+        changeState(true);
         await getProductById(id).then(prod => {
             let product = prod.data();
             if (product.stock > 0 && product.stock >= cantidad) {
@@ -23,11 +26,13 @@ const ButtonsTrolley = ({ idProduct }) => {
                 setCantidad(1);
                 setDataAlert({ text: 'No hay mas stock para este producto, disculpe las molestias.', state: true, color: '#32a881' });
             }
-
+        }).finally(() => {
+            changeState(false);
         })
     }
 
     const removeItem = async (id) => {
+        changeState(true);
         await getProductById(id).then(prod => {
             let product = prod.data();
             if (product.cantidad > 0) {
@@ -38,6 +43,8 @@ const ButtonsTrolley = ({ idProduct }) => {
             } else if (product.cantidad === 0) {
                 setDataAlert({ text: undefined, state: false, color: undefined });
             }
+        }).finally(() => {
+            changeState(false);
         })
     }
 

@@ -1,16 +1,22 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
+import { SpinnerContext } from "../../context/SpinnerContext";
 import { ImgService } from "../../services/ImgService";
 
 const Carousel = () => {
+    const {changeState} = useContext(SpinnerContext);
     const [img, setImg] = useState({ id: 1, name: "hplaptop11.webp" });
     const [imagenes, setImagenes] = useState([]);
 
     useEffect(() => {
         if (imagenes.length === 0) {
+            changeState(true);
             ImgService.getAllImagenes
                 .then(imagens => {
                     setImagenes(imagens.sort((a, b) => a.id - b.id));
-                })
+                    
+                }).finally(() => {
+                    changeState(false);
+                });
         }
     }, [{}])
 
