@@ -20,7 +20,7 @@ const CardsStore = ({category}) => {
   }, [{}])
 
   return (
-    <div>
+    <div style={{minHeight: "500px"}}>
       <div className="productosTittle">
         <label>PRODUCTOS DESTACADOS</label>
       </div>

@@ -501,6 +501,7 @@
     justify-content: space-evenly;
     margin-inline: auto;
     margin-top: 40px;
+    min-height: 500px;
 }
 .comprasPaymentTittle{
     width: 380px;
@@ -635,4 +636,8 @@
     padding-block: 5px;
     padding-inline: 10px;
     border-radius: 7px;
+}
+.containerInputFechaCode{
+    display: flex;
+    align-items: center;
 }

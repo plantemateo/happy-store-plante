@@ -153,6 +153,10 @@ const Compra = () => {
     navigate("/adquisiciones");
   }
 
+  if(paymentData === undefined || carritoProducts.length === 0){
+    navigate("/");
+  }
+
   return (
     <>
         {   
@@ -175,13 +179,17 @@ const Compra = () => {
                             <input className="cardDataInput" type={'number'} style={{textTransform: 'uppercase'}} placeholder={"4522 1223 9166 9024"} maxLength="12" onChange={(e) => {saveData({number: e.target.value})}}></input>
                             <label className="labelErrorCompras" style={{display: checksFormData.numberRequired ? "flex" : "none"}}>Este campo es obligatorio</label>
                         </div>
-                        <div>
-                            <label style={{marginRight: '10px'}}>Fecha Expiración</label>
-                            <input className="cardDataInputDate" type={'text'} style={{textTransform: 'uppercase'}} placeholder={"12/27"} maxLength="4" onChange={(e) => {saveData({expiration: e.target.value})}}></input>
-                            <label className="labelErrorCompras" style={{display: checksFormData.expirationRequired ? "flex" : "none", position: "fixed", marginLeft: "50px"}}>Este campo es obligatorio</label>
-                            <label style={{marginLeft: '20px', marginRight: '10px'}}>Código Seguridad</label>
-                            <input className="cardDataInputDate" type={'number'} style={{textTransform: 'uppercase'}} placeholder={"416"} maxLength="3" onChange={(e) => {saveData({securityCode: e.target.value})}}></input>
-                            <label className="labelErrorCompras" style={{display: checksFormData.securityCodeRequired ? "flex" : "none", position: "fixed", marginLeft: "350px"}}>Este campo es obligatorio</label>
+                        <div className="containerInputFechaCode">
+                            <div>
+                                <label style={{marginRight: '10px'}}>Fecha Expiración</label>
+                                <input className="cardDataInputDate" type={'text'} style={{textTransform: 'uppercase'}} placeholder={"12/27"} maxLength="4" onChange={(e) => {saveData({expiration: e.target.value})}}></input>
+                                <label className="labelErrorCompras" style={{display: checksFormData.expirationRequired ? "flex" : "none", position: "relative", marginLeft: "50px"}}>Este campo es obligatorio</label>
+                            </div>
+                            <div>
+                                <label style={{marginLeft: '20px', marginRight: '10px'}}>Código Seguridad</label>
+                                <input className="cardDataInputDate" type={'number'} style={{textTransform: 'uppercase'}} placeholder={"416"} maxLength="3" onChange={(e) => {saveData({securityCode: e.target.value})}}></input>
+                                <label className="labelErrorCompras" style={{display: checksFormData.securityCodeRequired ? "flex" : "none", position: "relative", marginLeft: "77px"}}>Este campo es obligatorio</label>
+                            </div>
                         </div>
                         <div>
                             <button style={{marginTop: '20px', marginRight: '30px', background: "#454d45"}} className="buttonBuy" onClick={() => {volverAtras(true)}}>VOLVER</button>
